@@ -1,0 +1,8 @@
+ava es un test runner que no soporta que los modulos
+que se importan dentro de si, utilizen ES2015 en su implementación
+. Si hacemos lo anteriores, obtendremos una excepción a la hora de
+ejecutar el test.
+
+Para evitar este problema, debemos decirle a ava que utilice el runtime de babel
+el cuál si soporta todas las funcionalidades de ES2015 y podrá transpilar todo lo que hagamos
+sin ningún problema.
