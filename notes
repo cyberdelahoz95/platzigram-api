@@ -6,3 +6,21 @@ ejecutar el test.
 Para evitar este problema, debemos decirle a ava que utilice el runtime de babel
 el cuál si soporta todas las funcionalidades de ES2015 y podrá transpilar todo lo que hagamos
 sin ningún problema.
+
+
+Instalando platzigramDB
+
+1. garantizamos dentro de la carpeta del modulo que vamos a instalar
+que todas las dependencias estén instaladas
+lo cual se logra al escribir el comando npm i
+
+2. enlazamos el comando npm link .
+este comando instala el modulo en el npm local de tal forma que se pueda
+utilziar en otros proyectos locales.
+
+3. nos dirigimos al proyecto que deseamos que consuma el modulo que instalamos en el NPM local en el paso anterior
+en este caso platzigram-api
+
+4. escribirmos dentro de la carpeta el comando
+npm link <nombre del modulo>
+npm link platzigram-db

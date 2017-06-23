@@ -4,7 +4,7 @@
   "description": "Platzigram Rest API",
   "scripts": {
     "lint": "standard",
-    "test": "npm run lint && ava --verbose"
+    "test": "export NODE_ENV='test' npm run lint  && ava --verbose test/**-test.js"
   },
   "standard": {
     "parser": "babel-eslint"
