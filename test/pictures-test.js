@@ -3,8 +3,9 @@
 import micro from 'micro'
 import test from 'ava'
 import listen from 'test-listen' // testear microservicios
-import request from 'request-promise' // modulo para hacer http request haciendo promesas, cómo por ejemplo con fetch api
+import request from 'request-promise' // modulo para hacer http request haciendo promesas, cómo por ejemplo con fetch api pero en este caso, esto correrá en el servidor
 import pictures from '../pictures'
+
 import fixtures from './fixtures'
 
 test.beforeEach(async t => {
@@ -45,4 +46,21 @@ test('POST /', async t =>  {
   t.deepEqual(response.body, image)
 })
 
-test.todo('POST /:id/like')
+test.test('POST /:id/like', async t => {
+  let image = fixtures.getImage()
+  let url = t.context.url
+
+  let options = {
+    method: 'POST',
+    uri: `${url}/${image.id}/like`,
+    json: true
+  }
+
+  let body = await request(options)
+  let imageNew =  JSON.parse(JSON.stringify(image))
+  imageNew.liked = true
+  imageNew.likes = 1
+
+  t.deepEqual(body, imageNew)
+})
+
