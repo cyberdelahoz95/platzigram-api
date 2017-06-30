@@ -11,5 +11,31 @@ export default {
       tags: ['awesome'],
       createdAt: new Date().toString()
     }
+  },
+
+  getImages () {
+    return [
+      this.getImage(),
+      this.getImage(),
+      this.getImage()
+    ]
+  },
+
+  getImagesByTag () {
+    return [
+      this.getImage(),
+      this.getImage()
+    ]
+  },
+
+  getUser () {
+    return {
+      id: '02b353bf5358995bc7d193ed1ce9c2eaec2b694b21d2f96232c9d6a0832121d1',
+      name: 'Freddy Vega',
+      username: 'freddier',
+      email: 'f@platzi.test',
+      password: 'pl4tz1',
+      createdAt: new Date().toString()
+    }
   }
 }

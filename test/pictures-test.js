@@ -13,6 +13,19 @@ test.beforeEach(async t => {
   t.context.url = await listen(srv)
 })
 
+test('GET /list', async t => {
+  let images = fixtures.getImages()
+  let url = t.context.url
+  let options = {
+    method: 'GET',
+    uri: `${url}/list`,
+    json: true
+  }
+
+  let body = await request(options)
+  t.deepEqual(body, images)
+})
+
 test('GET /:id', async t => {
   let image = fixtures.getImage()
 
@@ -46,7 +59,7 @@ test('POST /', async t =>  {
   t.deepEqual(response.body, image)
 })
 
-test.test('POST /:id/like', async t => {
+test('POST /:id/like', async t => {
   let image = fixtures.getImage()
   let url = t.context.url
 
@@ -62,5 +75,20 @@ test.test('POST /:id/like', async t => {
   imageNew.likes = 1
 
   t.deepEqual(body, imageNew)
+})
+
+
+test('GET /tag/:tag', async t => {
+  let images = fixtures.getImagesByTag()
+  let url = t.context.url
+
+  let options = {
+    method: 'GET',
+    uri: `${url}/tag/awesome`,
+    json: true
+  }
+
+  let body = await request(options)
+  t.deepEqual(body, images)
 })
 
