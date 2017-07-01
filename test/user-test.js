@@ -41,5 +41,21 @@ test('POST /', async t => {
 
 })
 
-test.todo('GET /:username')
+test('GET /:username', async t => {
+  let user = fixtures.getUser()
+  let url = t.context.url
+
+  let options = {
+    method: 'GET',
+    uri: `${url}/${user.username}`,
+    json: true
+  }
+
+  let body = await request(options)
+
+  delete user.email
+  delete user.password
+
+  t.deepEqual(body, user)
+})
 
