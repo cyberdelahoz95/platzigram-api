@@ -5,8 +5,9 @@ import test from 'ava'
 import listen from 'test-listen' // testear microservicios
 import request from 'request-promise' // modulo para hacer http request haciendo promesas, cómo por ejemplo con fetch api pero en este caso, esto correrá en el servidor
 import pictures from '../pictures'
-
+import utils from '../lib/utils'
 import fixtures from './fixtures'
+import config from '../config'
 
 test.beforeEach(async t => {
   let srv = micro(pictures)
@@ -35,6 +36,7 @@ test('GET /:id', async t => {
   t.deepEqual(body, image)
 })
 
+/*
 test('POST /', async t =>  {
   let image = fixtures.getImage()
   let url = t.context.url
@@ -57,7 +59,7 @@ test('POST /', async t =>  {
 
   t.is(response.statusCode, 201)
   t.deepEqual(response.body, image)
-})
+})*/
 
 test('POST /:id/like', async t => {
   let image = fixtures.getImage()
@@ -92,3 +94,47 @@ test('GET /tag/:tag', async t => {
   t.deepEqual(body, images)
 })
 
+test('POST WITHOUT JWT /', async t =>  {
+  let image = fixtures.getImage()
+  let url = t.context.url
+
+  let options = {
+    method: 'POST',
+    uri: url,
+    json: true,
+    body:{
+      description: image.description,
+      src: image.src,
+      userId: image.userId
+    },
+    resolveWithFullResponse: true
+  }
+
+  await t.throws(request(options), /invalid token/)
+})
+
+test('POST WITH JWT /', async t =>  {
+  let image = fixtures.getImage()
+  let url = t.context.url
+  let token = await utils.signToken({userId:image.userId}, config.secret)
+
+  let options = {
+    method: 'POST',
+    uri: url,
+    json: true,
+    body:{
+      description: image.description,
+      src: image.src,
+      userId: image.userId
+    },
+   headers: {
+     'Authorization': `Bearer ${token}`
+   },
+    resolveWithFullResponse: true
+  }
+
+  let response = await request(options)
+
+  t.is(response.statusCode, 201)
+  t.deepEqual(response.body, image)
+})

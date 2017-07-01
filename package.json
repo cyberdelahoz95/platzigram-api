@@ -10,8 +10,13 @@
     "parser": "babel-eslint"
   },
   "babel": {
-    "presets": ["es2015"],
-    "plugins":["transform-runtime","transform-async-to-generator"]
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "transform-async-to-generator"
+    ]
   },
   "ava": {
     "require": [
@@ -34,9 +39,11 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "http-hash": "^2.0.0",
+    "jsonwebtoken": "^7.4.1",
     "micro": "^7.3.3",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
+    "token-extractor": "^0.1.6",
     "uuid-base62": "^0.1.0"
   }
 }
