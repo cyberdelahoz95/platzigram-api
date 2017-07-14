@@ -79,7 +79,6 @@ test('POST /:id/like', async t => {
   t.deepEqual(body, imageNew)
 })
 
-
 test('GET /tag/:tag', async t => {
   let images = fixtures.getImagesByTag()
   let url = t.context.url

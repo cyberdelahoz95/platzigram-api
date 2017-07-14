@@ -45,9 +45,8 @@ hash.set('POST /', async function postPicture (req, res, params) {
   try {
     let token = await utils.extractToken(req)
     await utils.verifyToken(token, config.secret)
-  }
-  catch (e) {
-   return send(res, 401, { error: 'invalid token'})
+  } catch (e) {
+    return send(res, 401, { error: 'invalid token'})
   }
 
   await db.connect()

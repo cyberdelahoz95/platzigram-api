@@ -33,6 +33,8 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "standard": "^10.0.2",
     "test-listen": "^1.0.2"
   },
@@ -44,6 +46,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "token-extractor": "^0.1.6",
-    "uuid-base62": "^0.1.0"
+    "uuid-base62": "^0.1.0",
+    "platzigram-db": "cyberdelahoz95/platzigram-db"
   }
 }
