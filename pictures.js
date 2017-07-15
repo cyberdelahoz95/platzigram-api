@@ -9,9 +9,10 @@ import utils from './lib/utils'
 
 const env = process.env.NODE_ENV || 'production'
 let db = new Db(config.db)
-
+console.log(config.db)
 if (env === 'test') {
   db = new DbStub()
+  console.log('stub loaded')
 }
 
 const hash = HttpHash()

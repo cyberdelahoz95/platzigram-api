@@ -38,9 +38,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var env = process.env.NODE_ENV || 'production';
 var db = new _platzigramDb2.default(_config2.default.db);
-
+console.log(_config2.default.db);
 if (env === 'test') {
   db = new _db2.default();
+  console.log('stub loaded');
 }
 
 var hash = (0, _httpHash2.default)();
