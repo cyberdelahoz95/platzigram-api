@@ -37,8 +37,6 @@ test('POST /', async t => {
   t.is(response.statusCode, 201) // 201 significa que el objeto fue creado
   t.deepEqual(response.body, user)
 
-
-
 })
 
 test('GET /:username', async t => {

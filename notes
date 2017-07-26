@@ -24,3 +24,7 @@ en este caso platzigram-api
 4. escribirmos dentro de la carpeta el comando
 npm link <nombre del modulo>
 npm link platzigram-db
+
+
+MICRO DEBE SER INSTALADO GLOBALMENTE
+
