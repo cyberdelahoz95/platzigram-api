@@ -93,7 +93,7 @@ hash.set('POST /', function () {
 
 hash.set('GET /:username', function () {
   var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(req, res, params) {
-    var username, user;
+    var username, user, images;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -110,12 +110,21 @@ hash.set('GET /:username', function () {
             user = _context2.sent;
 
             user.avatar = _gravatar2.default.url(user.email);
+
+            _context2.next = 9;
+            return db.getImagesByUser(username);
+
+          case 9:
+            images = _context2.sent;
+
+            user.pictures = images;
+
             delete user.email;
             delete user.password;
 
             (0, _micro.send)(res, 200, user);
 
-          case 10:
+          case 14:
           case 'end':
             return _context2.stop();
         }
