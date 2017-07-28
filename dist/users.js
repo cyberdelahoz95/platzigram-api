@@ -30,6 +30,10 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
+var _gravatar = require('gravatar');
+
+var _gravatar2 = _interopRequireDefault(_gravatar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var env = process.env.NODE_ENV || 'production';
@@ -105,12 +109,13 @@ hash.set('GET /:username', function () {
           case 5:
             user = _context2.sent;
 
+            user.avatar = _gravatar2.default.url(user.email);
             delete user.email;
             delete user.password;
 
             (0, _micro.send)(res, 200, user);
 
-          case 9:
+          case 10:
           case 'end':
             return _context2.stop();
         }

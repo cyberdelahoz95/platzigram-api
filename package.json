@@ -40,13 +40,14 @@
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",
+    "gravatar": "^1.6.0",
     "http-hash": "^2.0.0",
     "jsonwebtoken": "^7.4.1",
     "micro": "^7.3.3",
+    "platzigram-db": "cyberdelahoz95/platzigram-db",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "token-extractor": "^0.1.6",
-    "uuid-base62": "^0.1.0",
-    "platzigram-db": "cyberdelahoz95/platzigram-db"
+    "uuid-base62": "^0.1.0"
   }
 }
